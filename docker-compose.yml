@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  netwatch:
+    build: .
+    container_name: netwatch-service
+    ports:
+      - "8000:8000"
+    environment:
+      - NETWATCH_PORT=8000
+      - NETWATCH_DB_PATH=backend/data/netwatch.db
+    volumes:
+      - netwatch-data:/app/backend/data
+    restart: unless-stopped
+
+volumes:
+  netwatch-data:
